@@ -31,7 +31,7 @@ while True:
     print("=" * 40)
 
     elapsed_time = time.time() - start_time
-    time_to_sleep = 10 - elapsed_time  # 10 saniye beklemesi gereken süreyi hesaplıyoruz
+    time_to_sleep = 1 - elapsed_time  # 10 saniye beklemesi gereken süreyi hesaplıyoruz
 
     if time_to_sleep > 0:
         time.sleep(time_to_sleep)
