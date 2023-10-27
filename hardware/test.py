@@ -1,12 +1,14 @@
 import psutil
 import time
 
-def get_system_usage():
-    cpu_percent = psutil.cpu_percent()  # CPU kullanım yüzdesi
-    memory = psutil.virtual_memory()  # Bellek kullanımı
-    network = psutil.net_io_counters()  # Ağ kullanımı
 
-    return cpu_percent, memory, network
+def get_system_usage():
+    cpu_kullanim = psutil.cpu_percent()  # CPU kullanım yüzdesi
+    memory_kullanim = psutil.virtual_memory()  # Bellek kullanımı
+    network_kullanim = psutil.net_io_counters()  # Ağ kullanımı
+
+    return cpu_kullanim, memory_kullanim, network_kullanim
+
 
 while True:
     start_time = time.time()  # Başlangıç zamanını kaydediyoruz
