@@ -15,7 +15,7 @@ get_network_data() {
     tx_bytes=$(cat "/sys/class/net/$interface/statistics/tx_bytes")
     # Bu bayt miktarlarını MB cinsine dönüştür
     local network_sent_mb
-    network_sent_mb=$(awk "BEGIN {printf \"%.2f\", $tx_bytes / 1024 / 1024}")
+    network_sent_mb=$(awk "BEGIN {printf \"%.2f\", $tx_bytes / 1024 / 1024} ")
     local network_recv_mb
     network_recv_mb=$(awk "BEGIN {printf \"%.2f\", $rx_bytes / 1024 / 1024}")
     # MB cinsinden gelen ve giden veriyi döndür
@@ -49,12 +49,14 @@ echo "====================="
 
 # Kablolu arayüz için ağ verilerini göster
 echo "Ağ Verileri - Kablolu (Wired) Arayüz:"
+# shellcheck disable=SC2207
 network_data=($(get_network_data_for_interface "$wired_interface"))
 echo "Toplam İndirilen: ${network_data[0]} MB"
 echo "Toplam Yüklenen: ${network_data[1]} MB"
 
 # Kablosuz arayüz için ağ verilerini göster
 echo "Ağ Verileri - Kablosuz (Wireless) Arayüz:"
+# shellcheck disable=SC2207
 network_data=($(get_network_data_for_interface "$wireless_interface"))
 echo "Toplam İndirilen: ${network_data[0]} MB"
 echo "Toplam Yüklenen: ${network_data[1]} MB"
